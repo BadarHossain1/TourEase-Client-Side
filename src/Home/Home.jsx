@@ -1,6 +1,7 @@
 import Banner from "../Bannner/Banner";
 import Countries from "../Countries/Countries";
 import Team from "../Our Team/Team";
+import Testimonials from "../Testimonials/Testimonials";
 import Sections from "../TouristSection/Sections";
 
 
@@ -13,11 +14,17 @@ const Home = () => {
             <div className="mt-[100px] ">
                 <Sections></Sections>
             </div>
+            <hr />
             <div className="mt-[100px]">
                 <Countries></Countries>
             </div>
+            <hr />
             <div className="">
                 <Team></Team>
+            </div>
+            <hr />
+            <div>
+                <Testimonials></Testimonials>
             </div>
         </div>
     );
