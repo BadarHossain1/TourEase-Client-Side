@@ -1,6 +1,6 @@
 import Banner from "../Bannner/Banner";
 import Countries from "../Countries/Countries";
-import Footer from "../Footer/Footer";
+
 import Team from "../Our Team/Team";
 import Testimonials from "../Testimonials/Testimonials";
 import Sections from "../TouristSection/Sections";
@@ -27,9 +27,7 @@ const Home = () => {
             <div>
                 <Testimonials></Testimonials>
             </div>
-            <div>
-                <Footer></Footer>
-            </div>
+            
         </div>
     );
 };

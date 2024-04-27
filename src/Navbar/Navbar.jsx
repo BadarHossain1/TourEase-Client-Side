@@ -39,9 +39,9 @@ const Navbar = () => {
                     <div className="navbar-center hidden lg:flex ">
                         <ul className="menu menu-horizontal px-1  ">
                             <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent  hover:text-[#0057d9]">Home</Link>
-                            <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display hover:bg-transparent  hover:text-[#0057d9]">All Tourist Spot</Link>
+                            <Link to='/AllTouristSpot' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display hover:bg-transparent  hover:text-[#0057d9]">All Tourist Spot</Link>
                             <Link to='/AddTouristSpot' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent hover:text-[#0057d9]">Add Tourist Spot</Link>
-                            <Link to='/' className=" mr-2 p-1 bg-transparent font-bold font-playfair-display  hover:bg-transparent hover:text-[#0057d9]">My List</Link>
+                            <Link to='/MyList' className=" mr-2 p-1 bg-transparent font-bold font-playfair-display  hover:bg-transparent hover:text-[#0057d9]">My List</Link>
                         </ul>
                     </div>
 

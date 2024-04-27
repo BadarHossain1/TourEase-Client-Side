@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import MyList from '../src/MyList/MyList'
 
 import './index.css'
 import {
@@ -12,6 +13,7 @@ import Login from './Login/Login';
 import Register from './assets/Register/Register';
 import AddTouristSpot from './AddTouristSpot/AddTouristSpot';
 import ErrorPage from './ErrorPage/ErrorPage';
+import AllTouristSpot from './AllTouristSpot/AllTouristSpot';
 
 const router = createBrowserRouter([
   {
@@ -31,20 +33,20 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
-      // {
-      //   path: '/AllTouristSpot',
-      //   element: 
-      // },
+       {
+         path: '/AllTouristSpot',
+         element: <AllTouristSpot></AllTouristSpot>
+       },
        {
         path: '/AddTouristSpot',
         element: <AddTouristSpot></AddTouristSpot>
         
       }, 
-      // {
-      //   path: '/MyList',
-      //   element: 
+      {
+        path: '/MyList',
+        element: <MyList></MyList>
 
-      // }
+      }
     ]
   },
 ]);
