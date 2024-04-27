@@ -5,8 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+      fontFamily: {
+        'playfair-display': ['"Playfair Display"', 'serif'],
+      },
+    },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark"],
+  },
 }
 
