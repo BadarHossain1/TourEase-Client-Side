@@ -25,29 +25,29 @@ const AuthProvider = ({ children }) => {
 
 
     const CreateUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const GoogleLogin = () => {
-        signInWithPopup(auth, GoogleProvider)
+        return signInWithPopup(auth, GoogleProvider)
     }
     const GithubLogin = () => {
-        signInWithPopup(auth, GithubProvider)
+        return signInWithPopup(auth, GithubProvider)
     }
 
 
     const LoginUser = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     const LogoutUser = () => {
-        signOut(auth);
+        return signOut(auth);
     }
 
 
 
     const UpdateProfile = (displayName, photoURL) => {
-        updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: displayName, photoURL: photoURL
         })
     }

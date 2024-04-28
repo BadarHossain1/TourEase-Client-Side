@@ -15,6 +15,8 @@ import AddTouristSpot from './AddTouristSpot/AddTouristSpot';
 import ErrorPage from './ErrorPage/ErrorPage';
 import AllTouristSpot from './AllTouristSpot/AllTouristSpot';
 
+import AuthProvider from './AuthProvider/AuthProvider';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,15 +35,15 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
-       {
-         path: '/AllTouristSpot',
-         element: <AllTouristSpot></AllTouristSpot>
-       },
-       {
+      {
+        path: '/AllTouristSpot',
+        element: <AllTouristSpot></AllTouristSpot>
+      },
+      {
         path: '/AddTouristSpot',
         element: <AddTouristSpot></AddTouristSpot>
-        
-      }, 
+
+      },
       {
         path: '/MyList',
         element: <MyList></MyList>
@@ -53,6 +55,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

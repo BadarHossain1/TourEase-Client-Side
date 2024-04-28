@@ -6,6 +6,8 @@ import Testimonials from "../Testimonials/Testimonials";
 import Sections from "../TouristSection/Sections";
 
 
+
+
 const Home = () => {
     return (
         <div>

@@ -1,27 +1,92 @@
 
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Login = () => {
-    const handleSubmit = e =>{
+
+    const { LoginUser, GoogleLogin, GithubLogin } = useContext(AuthContext);
+
+
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const handleSubmit = e => {
         e.preventDefault();
 
-        
+
         const email = e.target.email.value;
         const password = e.target.password.value;
-      
-        
+
+
         const userDetails = {
-            
+
             email: email,
-            
+
             password: password,
-            
+
 
         }
         console.log(userDetails);
+        if (passwordRegex.test(password)) {
+            LoginUser(email, password)
+                .then(res => {
+                    console.log(res.user)
+                    console.log('User logged in')
+
+                    // notify here
+
+                    
+
+                })
+
+                .catch(error => {
+                    console.log(error);
+                    console.log('error from login');
+                })
+        }
+        else {
+            alert('The password is not good habibi');
+        }
+
 
     }
+
+
+    const GoogleSignIn = e =>{
+        e.preventDefault();
+
+        GoogleLogin()
+        .then(result => {
+            console.log('User Google logged In', result.user);
+
+
+        })
+        .catch(error =>{
+            console.log('google login error', error);
+        })
+    }
+
+
+
+    const GithubSignIn = e =>{
+        e.preventDefault();
+
+        GithubLogin()
+        .then(result => {
+            console.log('User Github signed In', result.user);
+
+
+        })
+        .catch(error =>{
+            console.log('google error', error);
+        })
+    }
+
+
+
+
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -42,15 +107,15 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" className="input input-bordered" required />
-                                
+
                             </div>
 
                             <p className="text-center mt-5 font-semibold">Or Login With:</p>
                             <div className="flex justify-center gap-6 mt-4">
-                                <button className="btn btn-circle">
+                                <button onClick={GoogleSignIn} className="btn btn-circle">
                                     <FaGoogle />
                                 </button>
-                                <button className="btn btn-circle">
+                                <button onClick={GithubSignIn} className="btn btn-circle">
                                     <FaGithub />
                                 </button>
                             </div>

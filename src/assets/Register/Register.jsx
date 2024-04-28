@@ -1,9 +1,16 @@
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Register = () => {
 
-    const handleSubmit = e =>{
+
+    const {  CreateUser,  UpdateProfile,  GoogleLogin, GithubLogin } = useContext(AuthContext);
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    const handleSubmit = e => {
         e.preventDefault();
 
         const name = e.target.name.value;
@@ -15,14 +22,69 @@ const Register = () => {
             email: email,
             photoURL: photoURL,
             password: password,
-            
+
 
         }
         console.log(userDetails);
 
+        if(passwordRegex.test(password)){
+            CreateUser(email, password)
+            .then(res => {
+                console.log(res.user)
 
-        
+                // notify here
 
+                UpdateProfile(name, photoURL)
+                    .then(result => {
+                        console.log('user updated', result.user);
+                        //navigate
+                    })
+                    .catch(error => {
+                        console.log('Error while update', error);
+
+                    })
+
+            })
+
+            .catch(error => {
+                console.log(error);
+            })
+        }
+        else{
+            alert('The password is not good habibi');
+        }
+
+
+
+
+    }
+
+    const GoogleSignIn = e =>{
+        e.preventDefault();
+
+        GoogleLogin()
+        .then(result => {
+            console.log('User Google signed In', result.user);
+
+
+        })
+        .catch(error =>{
+            console.log('google error', error);
+        })
+    }
+
+    const GithubSignIn = e =>{
+        e.preventDefault();
+
+        GithubLogin()
+        .then(result => {
+            console.log('User Github signed In', result.user);
+
+
+        })
+        .catch(error =>{
+            console.log('google error', error);
+        })
     }
 
 
@@ -33,7 +95,7 @@ const Register = () => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    
+
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
@@ -59,15 +121,15 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                                
+
                             </div>
 
                             <p className="text-center mt-5 font-semibold">Or Login With:</p>
                             <div className="flex justify-center gap-6 mt-4">
-                                <button className="btn btn-circle">
+                                <button onClick={GoogleSignIn} className="btn btn-circle">
                                     <FaGoogle />
                                 </button>
-                                <button className="btn btn-circle">
+                                <button onClick={GithubSignIn} className="btn btn-circle">
                                     <FaGithub />
                                 </button>
                             </div>

@@ -34,6 +34,8 @@ const AddTouristSpot = () => {
         }
          console.log(AddSpot);
 
+         
+
     }
     return (
         <div className="mt-10 ">
