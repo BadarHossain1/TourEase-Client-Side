@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 
 
 const AllTouristSpot = () => {
+
+    fetch('http://localhost:5000/spots')
+    .then(res=>res.json())
+    .then(data => console.log(data));
+
     return (
         <div>
             <div className="">

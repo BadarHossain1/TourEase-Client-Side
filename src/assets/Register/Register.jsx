@@ -15,7 +15,7 @@ const Register = () => {
 
         const name = e.target.name.value;
         const email = e.target.email.value;
-        const photoURL = e.target.email.value;
+        const photoURL = e.target.photoURL.value;
         const password = e.target.password.value;
         const userDetails = {
             name: name,

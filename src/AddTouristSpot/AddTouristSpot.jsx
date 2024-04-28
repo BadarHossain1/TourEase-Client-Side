@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 const AddTouristSpot = () => {
+
+
+    const {user} = useContext(AuthContext)
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -14,8 +19,8 @@ const AddTouristSpot = () => {
         const season = e.target.season.value;
         const time = e.target.time.value;
         const visitors = e.target.visitors.value;
-        const Name = e.target.Name.value;
-        const email = e.target.email.value;
+        const Name = user?.displayName;
+        const email = user?.email;
       
 
         const AddSpot = {
@@ -33,6 +38,20 @@ const AddTouristSpot = () => {
 
         }
          console.log(AddSpot);
+         fetch('http://localhost:5000/spots', {
+            method: 'POST',
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(AddSpot),
+
+         })
+         .then(res=>res.json())
+         .then(data => {
+           
+                console.log('inserted', data);
+                alert('Inserted')
+
+            
+         })
 
          
 
@@ -80,8 +99,8 @@ const AddTouristSpot = () => {
 
 
 
-                    <input type="text" placeholder="Your Name" name="Name" className="input input-bordered input-info w-full max-w-xs" />
-                    <input type="email" placeholder="Your Email" name="email" className="input input-bordered input-info w-full max-w-xs" />
+                    <input type="text" placeholder="Your Name" name="Name" defaultValue={user?.displayName} className="input input-bordered input-info w-full max-w-xs" />
+                    <input type="email" placeholder="Your Email" name="email" defaultValue={user?.email} className="input input-bordered input-info w-full max-w-xs" />
 
                 </div>
                 <div className="form-control mt-6 w-2/4 mx-auto">

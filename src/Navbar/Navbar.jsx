@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdTravelExplore } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Navbar = () => {
 
     const [theme, setTheme] = useState("light");
+    const { user,LogoutUser } = useContext(AuthContext);
     console.log(theme);
 
     useEffect(() => {
@@ -14,6 +16,7 @@ const Navbar = () => {
     }, [theme])
 
     const handleTheme = (e) => {
+        
         if (e.target.checked) {
             setTheme("dark")
         }
@@ -21,6 +24,22 @@ const Navbar = () => {
             setTheme("light")
         }
     }
+
+    const handleLogout = e =>{
+        e.preventDefault();
+
+        LogoutUser()
+        .then(result => {
+            console.log('User Logged out', result)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+
+    }
+
+
     return (
         <div className="">
             <div className="navbar ">
@@ -61,24 +80,28 @@ const Navbar = () => {
                         <svg className="swap-on fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
 
                     </label>
-                    <div className="dropdown dropdown-end">
+                    
+
+                    {user ? <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
                                 <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
+                                    {user?.displayName}
+                                    <span className="badge">user</span>
                                 </a>
                             </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><button onClick={handleLogout}>Logout</button></li>
                         </ul>
-                    </div>
-                    <Link to='/login' className="btn bg-[#0057d9] btn-ghost text-white font-playfair-display">Login</Link>
+                    </div> : <Link to='/login' className="btn bg-[#0057d9] btn-ghost text-white font-playfair-display">Login</Link>
+                    }
+
+
+
 
 
                 </div>
