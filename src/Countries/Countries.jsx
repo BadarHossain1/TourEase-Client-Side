@@ -10,7 +10,7 @@ const Countries = () => {
             ">
 
 
-                <Link className="w-[350px] h-[350px] mx-auto ">
+                <Link to='/Countries/Bangladesh' className="w-[350px] h-[350px] mx-auto ">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/zSTWcY3/Bangladesh.jpg" alt="Image" />

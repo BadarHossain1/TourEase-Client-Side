@@ -11,7 +11,7 @@ import Sections from "../TouristSection/Sections";
 const Home = () => {
     return (
         <div>
-            <div className="mt-3 ">
+            <div className="mt-3 z-0">
                 <Banner></Banner>
             </div>
             <div className="mt-[100px] ">

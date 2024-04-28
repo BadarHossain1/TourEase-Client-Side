@@ -16,6 +16,7 @@ import ErrorPage from './ErrorPage/ErrorPage';
 import AllTouristSpot from './AllTouristSpot/AllTouristSpot';
 
 import AuthProvider from './AuthProvider/AuthProvider';
+import Bangladesh from './Countries/Bangladesh';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: '/MyList',
         element: <MyList></MyList>
 
+      }
+      ,{
+        path: '/Countries/Bangladesh',
+        element: <Bangladesh></Bangladesh>
       }
     ]
   },

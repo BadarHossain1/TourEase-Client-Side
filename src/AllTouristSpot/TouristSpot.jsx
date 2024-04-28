@@ -8,7 +8,7 @@ const TouristSpot = ({ data }) => {
     return (
         <div>
             <div className="card w-[90%] mx-auto lg:w-[400px] bg-base-100 shadow-xl flex-grow">
-                <figure><img src={Image} alt="Property" /></figure>
+                <figure><img src={Image} alt="Property" className="w-full h-[300px]" /></figure>
                 <div className="card-body ">
                     <h2 className="card-title font-playfair-display font-bold ">
                         {spotName}

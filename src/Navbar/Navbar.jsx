@@ -55,7 +55,7 @@ const Navbar = () => {
                             <Link to='/' className=" mr-2 p-1 bg-transparent font-bold font-playfair-display  hover:bg-transparent hover:text-[#0057d9]">My List</Link>
                         </ul>
                     </div>
-                    <div className="navbar-center hidden lg:flex ">
+                    <div className="navbar-center hidden lg:flex z-50">
                         <ul className="menu menu-horizontal px-1  ">
                             <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent  hover:text-[#0057d9]">Home</Link>
                             <Link to='/AllTouristSpot' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display hover:bg-transparent  hover:text-[#0057d9]">All Tourist Spot</Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
                     </label>
                     
 
-                    {user ? <div className="dropdown dropdown-end">
+                    {user ? <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
