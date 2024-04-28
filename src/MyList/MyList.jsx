@@ -1,71 +1,71 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import List from "./List";
 
 
 const AllTouristSpot = () => {
+    const { user } = useContext(AuthContext)
+    const [lists, setList] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/spots/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setList(data);
+            });
+    }, [user]);
+
+
     return (
         <div>
             <div className="">
                 <p className=" text-4xl lg:text-4xl   font-playfair-display font-extrabold text-center w-full  lg:w-7xl mx-auto pt-10">My <span className="text-[#0057d9] "> Lists</span></p>
-                
+
                 <hr className="border-1 mt-4 mb-16" />
-                <div className=" lg:w-7xl px-5 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div className="card w-[90%] mx-auto lg:w-[400px] bg-base-100 shadow-xl ">
-                        <figure><img src='https://i.ibb.co/NV6vc69/Rangamati-and-Banner4.jpg' alt="Property" /></figure>
-                        <div className="card-body ">
-                            <h2 className="card-title font-playfair-display font-bold ">
-                                Rangamati
-                            </h2>
-                            <p>Rangamati</p>
-                            <p>rangamati</p>
-                            <div className="card-actions justify-start">
-                                <div className="badge badge-outline">rangamati</div>
-                            </div>
-                            <div className="flex justify-start mt-4">
-                                <Link className="btn w-15 md:w-28 bg-[#0057d9] text-[#fff] ">Rangamati</Link>
-                            </div>
-                        </div>
+                <div className=" ">
+
+
+
+
+
+
+
+                    {/* {lists.map(list => <List key={list._id} list={list}></List>)} */}
+
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr >
+                                    <th>Image</th>
+                                    <th>Location</th>
+                                    <th>Average Cost</th>
+                                    <th>Visitors</th>
+                                    <th>Season</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {lists.map(list => (
+                                    <tr key={list._id}>
+                                        <td>
+                                            <img src={list.Image} alt={list.spotName} className="w-16 h-16 object-cover rounded-full" />
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p className="font-semibold">{list.spotName}</p>
+                                                <p>{list.countryName}, {list.location}</p>
+                                            </div>
+                                        </td>
+                                        <td>{list.averageCost}</td>
+                                        <td>{list.visitors}</td>
+                                        <td>{list.season}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+
+                        </table>
                     </div>
-
-
-
-
-                    <div className="card w-[90%] mx-auto lg:w-[400px] bg-base-100 shadow-xl ">
-                        <figure><img src='https://i.ibb.co/NV6vc69/Rangamati-and-Banner4.jpg' alt="Property" /></figure>
-                        <div className="card-body ">
-                            <h2 className="card-title font-playfair-display font-bold ">
-                                Rangamati
-                            </h2>
-                            <p>Rangamati</p>
-                            <p>rangamati</p>
-                            <div className="card-actions justify-start">
-                                <div className="badge badge-outline">rangamati</div>
-                            </div>
-                            <div className="flex justify-start mt-4">
-                                <Link className="btn w-15 md:w-28 bg-[#0057d9] text-[#fff] ">Rangamati</Link>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <div className="card w-[90%] mx-auto lg:w-[400px] bg-base-100 shadow-xl ">
-                        <figure><img src='https://i.ibb.co/NV6vc69/Rangamati-and-Banner4.jpg' alt="Property" /></figure>
-                        <div className="card-body ">
-                            <h2 className="card-title font-playfair-display font-bold ">
-                                Rangamati
-                            </h2>
-                            <p>Rangamati</p>
-                            <p>rangamati</p>
-                            <div className="card-actions justify-start">
-                                <div className="badge badge-outline">rangamati</div>
-                            </div>
-                            <div className="flex justify-start mt-4">
-                                <Link className="btn w-15 md:w-28 bg-[#0057d9] text-[#fff] ">Rangamati</Link>
-                            </div>
-                        </div>
-                    </div>
-
 
                 </div>
 
