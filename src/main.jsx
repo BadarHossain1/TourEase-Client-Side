@@ -22,6 +22,7 @@ import Indonesia from './Countries/Indonesia';
 import Malaysia from './Countries/Malaysia';
 import Vietnam from './Countries/Thailand';
 import Cambodia from './Countries/Cambodia';
+import Update from './Update/Update';
 
 
 const router = createBrowserRouter([
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       , {
         path: '/Countries/Cambodia',
         element: <Cambodia></Cambodia>
+      },
+      {
+        path: '/update/:id',
+        element: <Update></Update>
       }
     ]
   },

@@ -1,16 +1,65 @@
+
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const Countries = () => {
+
+    const countries = [
+        { countryName: "Bangladesh", Image: "https://i.ibb.co/zSTWcY3/Bangladesh.jpg", Description: "Bangladesh: Cultural richness historical landmarks, delicious cuisine.", },
+        { countryName: "Indonesia", Image: "https://i.ibb.co/JyNQkPy/Borobodur-Indonesia.jpg", Description: "Indonesia: Archipelago paradise, diverse cultures, stunning landscapes, exquisite cuisine.", },
+        { countryName: "Thailand", Image: "https://i.ibb.co/mR28XLH/Phi-Phi-Island.jpg", Description: "IThailand: Land of smiles, tropical beauty, rich culture, delicious cuisine." },
+        { countryName: "Malaysia", Image: "https://i.ibb.co/6YvsnQy/Malaysia.jpg", Description: "Malaysia: Multicultural gem, tropical paradise,  modern metropolises, stunning biodiversity.", },
+        { countryName: "Vietnam", Image: "https://i.ibb.co/0mYJYcy/Mekong-delta.jpg", Description: " Vietnam: Timeless charm, lush landscapes, rich history, delectable cuisine, vibrant markets.", },
+        { countryName: "Cambodia", Image: "https://i.ibb.co/wgHsm2D/Angkor-wat-cambodia.jpg", Description: "Cambodia: Ancient wonders, majestic temples, Khmer culture, warm hospitality, scenic beauty.", },
+
+    ]
+
+
+    const [country, setCountry] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/Country', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ countries })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+
+            })
+    }, [])
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/Country')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                setCountry(data);
+
+
+
+            })
+    }, [])
+
+
+
     return (
         <div>
+            <h1>{country.length}</h1>
             <p className=" text-4xl lg:text-4xl   font-playfair-display font-semibold text-center w-full  lg:w-7xl mx-auto pt-10"> <span className="text-[#0057d9]">Countries</span> </p>
             <hr className="border-1 mt-4 mb-16" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[1100px] mx-auto
             ">
+                <h1>{country.length}</h1>
 
-
-                <Link to='/Countries/Bangladesh' className="w-[350px] h-[350px] mx-auto ">
+                {/* <Link to='/Countries/Bangladesh' className="w-[350px] h-[350px] mx-auto ">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/zSTWcY3/Bangladesh.jpg" alt="Image" />
@@ -37,7 +86,7 @@ const Countries = () => {
                     </div>
                 </Link>
                 <Link to='/Countries/Thailand'
-                 className="w-[350px] h-[350px] mx-auto">
+                    className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/mR28XLH/Phi-Phi-Island.jpg" alt="Image" />
@@ -90,7 +139,7 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </Link>
+                </Link> */}
 
             </div>
 

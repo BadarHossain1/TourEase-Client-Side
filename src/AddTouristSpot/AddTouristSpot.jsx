@@ -21,6 +21,8 @@ const AddTouristSpot = () => {
         const visitors = e.target.visitors.value;
         const Name = user?.displayName;
         const email = user?.email;
+
+        
       
 
         const AddSpot = {
@@ -49,6 +51,7 @@ const AddTouristSpot = () => {
            
                 console.log('inserted', data);
                 alert('Inserted')
+                e.target.reset();
 
             
          })

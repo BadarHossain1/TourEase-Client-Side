@@ -75,11 +75,11 @@ const AllTouristSpot = () => {
                                                 <p>{list.countryName}, {list.location}</p>
                                             </div>
                                         </td>
-                                        <td>{list.averageCost}</td>
+                                        <td>{list.averageCost}BDT</td>
                                         <td>{list.visitors}</td>
                                         <td>{list.season}</td>
                                         <td><button onClick={() => handleDelete(list._id)} className="btn">Delete</button></td>
-                                        <td><button>Update</button></td>
+                                        <td><Link to={`/update/${list._id}`} className="btn">Update</Link></td>
                                     </tr>
                                 ))}
                             </tbody>
