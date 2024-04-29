@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 const Login = () => {
 
-    const { LoginUser, GoogleLogin, GithubLogin } = useContext(AuthContext);
+    const { LoginUser, GoogleLogin, GithubLogin, } = useContext(AuthContext);
 
 
 
@@ -36,7 +36,7 @@ const Login = () => {
 
                     // notify here
 
-                    
+
 
                 })
 
@@ -53,34 +53,36 @@ const Login = () => {
     }
 
 
-    const GoogleSignIn = e =>{
+    const GoogleSignIn = e => {
         e.preventDefault();
 
         GoogleLogin()
-        .then(result => {
-            console.log('User Google logged In', result.user);
+            .then(result => {
+                console.log('User Google logged In', result.user);
+                setLoading(false);
 
 
-        })
-        .catch(error =>{
-            console.log('google login error', error);
-        })
+            })
+            .catch(error => {
+                console.log('google login error', error);
+            })
     }
 
 
 
-    const GithubSignIn = e =>{
+    const GithubSignIn = e => {
         e.preventDefault();
 
         GithubLogin()
-        .then(result => {
-            console.log('User Github signed In', result.user);
+            .then(result => {
+                console.log('User Github signed In', result.user);
+                setLoading(false)
 
 
-        })
-        .catch(error =>{
-            console.log('google error', error);
-        })
+            })
+            .catch(error => {
+                console.log('google error', error);
+            })
     }
 
 

@@ -42,11 +42,11 @@ const ViewDetails = () => {
                             <p className="badge badge-outline">{info.location}</p>
     
     
-                            <p className="font-semibold">{info.countryName}</p>
-                            <p className="font-semibold">{info.visitors}</p>
+                            <p className="font-semibold">Country Name: {info.countryName}</p>
+                            <p className="font-semibold">Visitors: {info.visitors}</p>
     
-                            <p className="font-bold">Status: {info.time}</p>
-                            <p className="font-bold">Status: {info.season}</p>
+                            <p className="font-bold">Travel Time: {info.time}days</p>
+                            <p className="font-bold">Season: {info.season}</p>
                             <p className="text-black font-bold">Average Cost: <span className="text-green-400">{info.averageCost}</span></p>
                         </div>
                     </div>

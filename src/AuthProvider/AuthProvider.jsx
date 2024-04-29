@@ -20,27 +20,33 @@ const GithubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 
 
 
     const CreateUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const GoogleLogin = () => {
+        setLoading(true)
         return signInWithPopup(auth, GoogleProvider)
     }
     const GithubLogin = () => {
+        setLoading(true)
         return signInWithPopup(auth, GithubProvider)
     }
 
 
     const LoginUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const LogoutUser = () => {
+        setLoading(true)
         return signOut(auth);
     }
 
@@ -59,10 +65,13 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 console.log('User changed', currentUser);
                 setUser(currentUser);
+                setLoading(false)
                 // ...
             } else {
                 // User is signed out
                 console.log('User signed out');
+                setLoading(false);
+
             }
         });
 
@@ -75,7 +84,7 @@ const AuthProvider = ({ children }) => {
 
 
     const authInfo = {
-        user, CreateUser, LoginUser, UpdateProfile, LogoutUser, GoogleLogin, GithubLogin
+        user, CreateUser, LoginUser, UpdateProfile, LogoutUser, GoogleLogin, GithubLogin, loading, setLoading,
 
     }
     return (
