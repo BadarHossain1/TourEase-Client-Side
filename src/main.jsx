@@ -17,6 +17,8 @@ import AllTouristSpot from './AllTouristSpot/AllTouristSpot';
 
 import AuthProvider from './AuthProvider/AuthProvider';
 import Bangladesh from './Countries/Bangladesh';
+import ViewDetails from './ViewDetails/ViewDetails';
+
 
 const router = createBrowserRouter([
   {
@@ -49,11 +51,20 @@ const router = createBrowserRouter([
         path: '/MyList',
         element: <MyList></MyList>
 
+      },
+
+      {
+        path: '/spots/id/:id',
+        element: <ViewDetails></ViewDetails>,
+        
+         
       }
-      ,{
+      , {
         path: '/Countries/Bangladesh',
         element: <Bangladesh></Bangladesh>
-      }
+      },
+
+
     ]
   },
 ]);
