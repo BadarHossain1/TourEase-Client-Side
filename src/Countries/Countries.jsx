@@ -23,7 +23,7 @@ const Countries = () => {
                         </div>
                     </div>
                 </Link>
-                <div className="w-[350px] h-[350px] mx-auto">
+                <Link to='/Countries/Indonesia' className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/JyNQkPy/Borobodur-Indonesia.jpg" alt="Image" />
@@ -35,8 +35,9 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-[350px] h-[350px] mx-auto">
+                </Link>
+                <Link to='/Countries/Thailand'
+                 className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/mR28XLH/Phi-Phi-Island.jpg" alt="Image" />
@@ -48,8 +49,8 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-[350px] h-[350px] mx-auto">
+                </Link>
+                <Link to='/Countries/Malaysia' className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/6YvsnQy/Malaysia.jpg" alt="Image" />
@@ -61,8 +62,8 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-[350px] h-[350px] mx-auto">
+                </Link>
+                <Link to='/Countries/Vietnam' className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/0mYJYcy/Mekong-delta.jpg" alt="Image" />
@@ -75,8 +76,8 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-[350px] h-[350px] mx-auto">
+                </Link>
+                <Link to='/Countries/Cambodia' className="w-[350px] h-[350px] mx-auto">
                     <div className="relative">
                         <div className="overflow-hidden rounded-lg shadow-lg hover:opacity-80 transition duration-300">
                             <img className="w-full h-full object-cover" src="https://i.ibb.co/wgHsm2D/Angkor-wat-cambodia.jpg" alt="Image" />
@@ -89,7 +90,7 @@ const Countries = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
 
             </div>
 

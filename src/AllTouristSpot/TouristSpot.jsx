@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TouristSpot = ({ data }) => {
 
-    const { Image, spotName, averageCost, visitors, time, season } = data;
+    const { _id, Image, spotName, averageCost, visitors, time, season } = data;
 
     return (
         <div>
@@ -19,7 +19,7 @@ const TouristSpot = ({ data }) => {
                         <div className="badge badge-outline">{time} days</div>
                     </div>
                     <div className="flex justify-start mt-4">
-                        <Link className="btn w-15 md:w-28 bg-[#0057d9] text-[#fff] flex-grow">View Details</Link>
+                        <Link to={`/spots/id/${_id}`} className="btn w-15 md:w-28 bg-[#0057d9] text-[#fff] flex-grow">View Details</Link>
                     </div>
                 </div>
             </div>

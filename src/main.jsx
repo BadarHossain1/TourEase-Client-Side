@@ -18,6 +18,10 @@ import AllTouristSpot from './AllTouristSpot/AllTouristSpot';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Bangladesh from './Countries/Bangladesh';
 import ViewDetails from './ViewDetails/ViewDetails';
+import Indonesia from './Countries/Indonesia';
+import Malaysia from './Countries/Malaysia';
+import Vietnam from './Countries/Thailand';
+import Cambodia from './Countries/Cambodia';
 
 
 const router = createBrowserRouter([
@@ -62,9 +66,27 @@ const router = createBrowserRouter([
       , {
         path: '/Countries/Bangladesh',
         element: <Bangladesh></Bangladesh>
+      }
+      , {
+        path: '/Countries/Thailand',
+        element: <Indonesia></Indonesia>
       },
-
-
+      {
+       path: '/Countries/Indonesia',
+       element: <Indonesia></Indonesia>
+     }
+      , {
+        path: '/Countries/Malaysia',
+        element: <Malaysia></Malaysia>
+      }
+      , {
+        path: '/Countries/Vietnam',
+        element: <Vietnam></Vietnam>
+      }
+      , {
+        path: '/Countries/Cambodia',
+        element: <Cambodia></Cambodia>
+      }
     ]
   },
 ]);

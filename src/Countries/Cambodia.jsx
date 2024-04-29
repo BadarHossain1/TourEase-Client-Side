@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import Country from "./Country";
 
 
-const Indonesia = () => {
+const Cambodia = () => {
 
     const [infos, setInfo] = useState([]);
     
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/spots/Countries/Indonesia')
+        fetch('http://localhost:5000/spots/Countries/Cambodia')
         .then(res=>res.json())
         .then(data =>{
             console.log(data);
@@ -28,4 +28,4 @@ const Indonesia = () => {
     );
 };
 
-export default Indonesia;
+export default Cambodia;

@@ -79,7 +79,7 @@ const AddTouristSpot = () => {
 
                     <input type="text" placeholder="Write a Description" name="description" className="input input-bordered input-info w-full max-w-xs" />
 
-                    <input type="text" placeholder="Average Cost" name="averageCost" className="input input-bordered input-info w-full max-w-xs" />
+                    <input type="number" placeholder="Average Cost" name="averageCost" className="input input-bordered input-info w-full max-w-xs" />
 
 
 

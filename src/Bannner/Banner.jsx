@@ -15,7 +15,7 @@ import { Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <div className="rounded-2xl -z-20">
+        <div className="rounded-2xl z-0">
             <Swiper pagination={{
                 dynamicBullets: true,
             }}

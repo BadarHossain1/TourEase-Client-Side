@@ -16,6 +16,23 @@ const AllTouristSpot = () => {
             });
     }, [user]);
 
+    const handleDelete = (id) => {
+        console.log('DELETE KORO', id);
+        fetch(`http://localhost:5000/spots/id/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => {
+                console.log(res);
+                // You may want to check if the deletion was successful and update the state accordingly
+                // For example, you can filter out the deleted item from the lists state
+                setList(prevLists => prevLists.filter(item => item._id !== id));
+            })
+            .then(data => { console.log(data) })
+            .catch(error => {
+                console.error('Error deleting:', error);
+            });
+    }
+
 
     return (
         <div>
@@ -43,6 +60,7 @@ const AllTouristSpot = () => {
                                     <th>Average Cost</th>
                                     <th>Visitors</th>
                                     <th>Season</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +78,8 @@ const AllTouristSpot = () => {
                                         <td>{list.averageCost}</td>
                                         <td>{list.visitors}</td>
                                         <td>{list.season}</td>
+                                        <td><button onClick={() => handleDelete(list._id)} className="btn">Delete</button></td>
+                                        <td><button>Update</button></td>
                                     </tr>
                                 ))}
                             </tbody>
