@@ -10,20 +10,20 @@ const AllTouristSpot = () => {
     console.log(cards)
 
     useEffect(() => {
-        fetch('http://localhost:5000/spots')
+        fetch('https://tourease-gamma.vercel.app/spots')
             .then(res => res.json())
             .then(data => {
                 setCards(data);
-                
+
             });
     }, []);
 
-    const handleSort = () =>{
+    const handleSort = () => {
 
-        
 
-         const sortedCards = [...cards].sort((a,b)=> parseInt(a.averageCost) - parseInt(b.averageCost))
-         setCards(sortedCards);
+
+        const sortedCards = [...cards].sort((a, b) => parseInt(a.averageCost) - parseInt(b.averageCost))
+        setCards(sortedCards);
 
 
     }
@@ -45,7 +45,7 @@ const AllTouristSpot = () => {
                     <div tabIndex={0} role="button" className="btn m-1 bg-blue-600 text-white">Sort</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li><button onClick={handleSort}>Average Cost</button></li>
-                        
+
                     </ul>
                 </div>
                 <div className=" lg:w-7xl px-5 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

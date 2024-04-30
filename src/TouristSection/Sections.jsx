@@ -7,10 +7,10 @@ const Sections = () => {
     const [sections, setSections] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/spots')
+        fetch('https://tourease-gamma.vercel.app/spots')
             .then(res => res.json())
             .then(data => {
-                
+
                 setSections(data);
 
             })
@@ -24,12 +24,12 @@ const Sections = () => {
             <div className=" lg:w-7xl px-5 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                 {
-                    sections.slice(0,6).map(section => <Section key={section._id} section={section}></Section>)
+                    sections.slice(0, 6).map(section => <Section key={section._id} section={section}></Section>)
                 }
 
 
 
-                
+
 
 
             </div>

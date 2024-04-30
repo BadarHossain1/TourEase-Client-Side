@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 const AddTouristSpot = () => {
 
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,8 +22,8 @@ const AddTouristSpot = () => {
         const Name = user?.displayName;
         const email = user?.email;
 
-        
-      
+
+
 
         const AddSpot = {
             Image: Image,
@@ -39,24 +39,24 @@ const AddTouristSpot = () => {
             email: email,
 
         }
-         console.log(AddSpot);
-         fetch('http://localhost:5000/spots', {
+        console.log(AddSpot);
+        fetch('https://tourease-gamma.vercel.app/spots', {
             method: 'POST',
-            headers: {"Content-type": "application/json"},
+            headers: { "Content-type": "application/json" },
             body: JSON.stringify(AddSpot),
 
-         })
-         .then(res=>res.json())
-         .then(data => {
-           
+        })
+            .then(res => res.json())
+            .then(data => {
+
                 console.log('inserted', data);
                 alert('Inserted')
                 e.target.reset();
 
-            
-         })
 
-         
+            })
+
+
 
     }
     return (

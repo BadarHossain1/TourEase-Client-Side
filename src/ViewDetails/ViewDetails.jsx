@@ -12,10 +12,10 @@ const ViewDetails = () => {
     console.log(infos);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/id/${id}`)
+        fetch(`https://tourease-gamma.vercel.app/spots/id/${id}`)
             .then(res => res.json())
             .then(data => {
-                
+
                 setInfo(data);
             })
 
@@ -23,28 +23,28 @@ const ViewDetails = () => {
 
 
 
-   
+
 
 
     return (
         <div>
 
-         
+
 
             {
-                infos.slice(0,1).map(info => <div key={info._id}>
+                infos.slice(0, 1).map(info => <div key={info._id}>
                     <div className="card lg:card-side    shadow-xl mt-6 mb-6">
                         <figure className="w-[50%] mx-auto mt-6"><img src={info.Image} alt="Album" /></figure>
                         <div className="card-body ">
                             <h1 className="card-title text-3xl">{info.spotName}</h1>
                             <p>{info.description}</p>
-    
+
                             <p className="badge badge-outline">{info.location}</p>
-    
-    
+
+
                             <p className="font-semibold">Country Name: {info.countryName}</p>
                             <p className="font-semibold">Visitors: {info.visitors}</p>
-    
+
                             <p className="font-bold">Travel Time: {info.time}days</p>
                             <p className="font-bold">Season: {info.season}</p>
                             <p className="text-black font-bold">Average Cost: <span className="text-green-400">{info.averageCost}</span></p>

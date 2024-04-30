@@ -11,7 +11,7 @@ const Update = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/id/${id}`)
+        fetch(`https://tourease-gamma.vercel.app/spots/id/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data[0]);
@@ -54,7 +54,7 @@ const Update = () => {
 
         }
         console.log(AddSpot);
-        fetch(`http://localhost:5000/spots/id/${id}`, {
+        fetch(`https://tourease-gamma.vercel.app/spots/id/${id}`, {
             method: 'PUT',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(AddSpot),
@@ -69,7 +69,7 @@ const Update = () => {
 
 
             })
-      
+
 
 
 
@@ -82,54 +82,54 @@ const Update = () => {
 
             {
                 lists.map(list => <form key={list._id} onSubmit={handleSubmit} className="w-3/4 mx-auto mb-10">
-                <div className="flex flex-col lg:flex-row justify-center gap-4  mb-6">
+                    <div className="flex flex-col lg:flex-row justify-center gap-4  mb-6">
 
 
-                    <input type="text" placeholder="Image Link" name="Image" defaultValue={list?.Image} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="text" placeholder="Image Link" name="Image" defaultValue={list?.Image} className="input input-bordered input-info w-full max-w-xs" />
 
-                    <input type="text" placeholder="Name of the Spot" name="spotName" defaultValue={list.spotName} className="input input-bordered input-info w-full max-w-xs" />
-                    <input type="text" placeholder="Name of the Country" name="countryName" defaultValue={list.countryName} className="input input-bordered input-info w-full max-w-xs" />
-                </div>
-
-
-
-                <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
-                    <input type="text" placeholder="Location" name="location" defaultValue={list.location} className="input input-bordered input-info w-full max-w-xs" />
-
-                    <input type="text" placeholder="Write a Description" name="description" defaultValue={list.description} className="input input-bordered input-info w-full max-w-xs" />
-
-                    <input type="number" placeholder="Average Cost" name="averageCost" defaultValue={list.averageCost} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="text" placeholder="Name of the Spot" name="spotName" defaultValue={list.spotName} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="text" placeholder="Name of the Country" name="countryName" defaultValue={list.countryName} className="input input-bordered input-info w-full max-w-xs" />
+                    </div>
 
 
 
+                    <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
+                        <input type="text" placeholder="Location" name="location" defaultValue={list.location} className="input input-bordered input-info w-full max-w-xs" />
 
-                </div>
-                <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
+                        <input type="text" placeholder="Write a Description" name="description" defaultValue={list.description} className="input input-bordered input-info w-full max-w-xs" />
 
-                    <input type="text" placeholder="Seasonality - like summer, winter" name="season" defaultValue={list.season} className="input input-bordered input-info w-full max-w-xs" />
-
-                    <input type="number" placeholder="Travel Time" name="time" defaultValue={list?.time} className="input input-bordered input-info w-full max-w-xs" />
-                    <input type="number" placeholder="Total Visitors Per Year" name="visitors" defaultValue={list?.visitors} className="input input-bordered input-info w-full max-w-xs" />
-
-                </div>
-                <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
+                        <input type="number" placeholder="Average Cost" name="averageCost" defaultValue={list.averageCost} className="input input-bordered input-info w-full max-w-xs" />
 
 
 
 
+                    </div>
+                    <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
 
-                    <input type="text" placeholder="Your Name" name="Name" defaultValue={user?.displayName} className="input input-bordered input-info w-full max-w-xs" />
-                    <input type="email" placeholder="Your Email" name="email" defaultValue={user?.email} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="text" placeholder="Seasonality - like summer, winter" name="season" defaultValue={list.season} className="input input-bordered input-info w-full max-w-xs" />
 
-                </div>
-                <div className="form-control mt-6 w-2/4 mx-auto">
-                    <button className="btn bg-[#0057d9] text-white">Update</button>
-                    {/* Toast */}
-                </div>
-            </form>)
+                        <input type="number" placeholder="Travel Time" name="time" defaultValue={list?.time} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="number" placeholder="Total Visitors Per Year" name="visitors" defaultValue={list?.visitors} className="input input-bordered input-info w-full max-w-xs" />
+
+                    </div>
+                    <div className="flex flex-col lg:flex-row  justify-center gap-4  mb-6">
+
+
+
+
+
+                        <input type="text" placeholder="Your Name" name="Name" defaultValue={user?.displayName} className="input input-bordered input-info w-full max-w-xs" />
+                        <input type="email" placeholder="Your Email" name="email" defaultValue={user?.email} className="input input-bordered input-info w-full max-w-xs" />
+
+                    </div>
+                    <div className="form-control mt-6 w-2/4 mx-auto">
+                        <button className="btn bg-[#0057d9] text-white">Update</button>
+                        {/* Toast */}
+                    </div>
+                </form>)
             }
 
-            
+
 
 
 

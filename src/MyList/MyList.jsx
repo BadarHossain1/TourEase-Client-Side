@@ -9,7 +9,7 @@ const AllTouristSpot = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/${user?.email}`)
+        fetch(`https://tourease-gamma.vercel.app/spots/${user?.email}`)
             .then(res => res.json())
             .then(data => {
 
@@ -29,7 +29,7 @@ const AllTouristSpot = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/spots/id/${id}`, {
+                fetch(`https://tourease-gamma.vercel.app/spots/id/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => {
