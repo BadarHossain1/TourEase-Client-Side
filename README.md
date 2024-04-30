@@ -1,6 +1,6 @@
 # Name of the Website: TourEase
 
-## Live Site: [[TourEase](https://royalty-estate-d7d9e.web.app/)]
+## Live Site: [[TourEase](https://tourease-b114f.web.app/)]
 
 ### Features:
 - Navbar section having title, contact us route, update profile route and an avatar if user is logged in.
@@ -20,6 +20,6 @@
 
 
 ### Npm packages used:
-1. [AOS Package](https://www.npmjs.com/package/aos)
-2. [React Hook Form](https://react-hook-form.com/)
-3. [Swiper Slider](https://swiperjs.com/)
+1. [React-Simple-Typewriter](https://www.npmjs.com/package/react-simple-typewriter)
+2. [React Tooltip](https://react-tooltip.com/)
+
