@@ -4,9 +4,13 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 const Login = () => {
 
-    const { LoginUser, GoogleLogin, GithubLogin, setLoading} = useContext(AuthContext);
+    const { LoginUser, GoogleLogin, GithubLogin, setLoading } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -14,6 +18,40 @@ const Login = () => {
 
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+
+    const notify = (success) => {
+        if (success) {
+            toast.success('Login Completed. Welcome', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        else {
+            toast.error('Error Loggin In', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+
+            });
+
+        }
+    }
+
+
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -36,9 +74,9 @@ const Login = () => {
                 .then(res => {
                     console.log(res.user)
                     console.log('User logged in')
+                    notify(true);
                     navigate(location?.state || '/')
-
-                    // notify here
+                    
 
 
 
@@ -46,11 +84,21 @@ const Login = () => {
 
                 .catch(error => {
                     console.log(error);
-                    console.log('error from login');
+                    notify(false);
                 })
         }
         else {
-            alert('The password is not good habibi');
+            toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
 
 
@@ -64,12 +112,14 @@ const Login = () => {
             .then(result => {
                 console.log('User Google logged In', result.user);
                 setLoading(false);
+                notify(true)
                 navigate(location?.state || '/')
 
 
             })
             .catch(error => {
                 console.log('google login error', error);
+                notify(false)
             })
     }
 
@@ -82,12 +132,14 @@ const Login = () => {
             .then(result => {
                 console.log('User Github signed In', result.user);
                 setLoading(false)
+                notify(true)
                 navigate(location?.state || '/')
 
 
             })
             .catch(error => {
                 console.log('google error', error);
+                notify(false)
             })
     }
 
@@ -130,7 +182,7 @@ const Login = () => {
                             <p>New To The Site? Please <Link to='/register' className="text-[#0057d9] font-bold font-playfair-display">Register.....</Link></p>
                             <div className="form-control mt-6">
                                 <button className="btn bg-[#0057d9] text-white">Login</button>
-                                {/* Toast */}
+                                <ToastContainer />
                             </div>
                         </form>
 

@@ -3,16 +3,51 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 const Register = () => {
 
 
-    const {  CreateUser,  UpdateProfile,  GoogleLogin, GithubLogin } = useContext(AuthContext);
+    const { CreateUser, UpdateProfile, GoogleLogin, GithubLogin } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const from = '/';
-    
+
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+
+    const notify = (success) => {
+        if (success) {
+            toast.success('User Created Successfully', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        else {
+            toast.error('Error Creating User', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+
+            });
+
+        }
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -31,31 +66,43 @@ const Register = () => {
         }
         console.log(userDetails);
 
-        if(passwordRegex.test(password)){
+        if (passwordRegex.test(password)) {
             CreateUser(email, password)
-            .then(res => {
-                console.log(res.user)
+                .then(res => {
+                    console.log(res.user)
+                    notify(true);
 
-                // notify here
 
-                UpdateProfile(name, photoURL)
-                    .then(result => {
-                        console.log('user updated', result.user);
-                       navigate(from)
-                    })
-                    .catch(error => {
-                        console.log('Error while update', error);
 
-                    })
+                    UpdateProfile(name, photoURL)
+                        .then(result => {
+                            console.log('user updated', result.user);
+                            navigate(from)
+                        })
+                        .catch(error => {
+                            console.log('Error while update', error);
+                            
 
-            })
+                        })
 
-            .catch(error => {
-                console.log(error);
-            })
+                })
+
+                .catch(error => {
+                    console.log(error);
+                })
         }
-        else{
-            alert('The password is not good habibi');
+        else {
+            toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
 
 
@@ -63,34 +110,38 @@ const Register = () => {
 
     }
 
-    const GoogleSignIn = e =>{
+    const GoogleSignIn = e => {
         e.preventDefault();
 
         GoogleLogin()
-        .then(result => {
-            console.log('User Google signed In', result.user);
-            navigate(from)
+            .then(result => {
+                console.log('User Google signed In', result.user);
+                notify(true)
+                navigate(from)
 
 
-        })
-        .catch(error =>{
-            console.log('google error', error);
-        })
+            })
+            .catch(error => {
+                console.log('google error', error);
+                notify(false);
+            })
     }
 
-    const GithubSignIn = e =>{
+    const GithubSignIn = e => {
         e.preventDefault();
 
         GithubLogin()
-        .then(result => {
-            console.log('User Github signed In', result.user);
-            navigate(from)
+            .then(result => {
+                console.log('User Github signed In', result.user);
+                notify(true)
+                navigate(from)
 
 
-        })
-        .catch(error =>{
-            console.log('google error', error);
-        })
+            })
+            .catch(error => {
+                console.log('google error', error);
+                notify(false);
+            })
     }
 
 
@@ -142,7 +193,7 @@ const Register = () => {
                             <p>Already have an account? Please <Link to='/login' className="text-[#0057d9] font-bold font-playfair-display">Login.....</Link></p>
                             <div className="form-control mt-6">
                                 <button className="btn bg-[#0057d9] text-white">Register</button>
-                                {/* Toast */}
+                                <ToastContainer />
                             </div>
                         </form>
 
