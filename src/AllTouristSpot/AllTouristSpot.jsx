@@ -20,7 +20,10 @@ const AllTouristSpot = () => {
 
     const handleSort = () =>{
 
-        fetch('')
+        
+
+         const sortedCards = [...cards].sort((a,b)=> parseInt(a.averageCost) - parseInt(b.averageCost))
+         setCards(sortedCards);
 
 
     }
@@ -39,9 +42,9 @@ const AllTouristSpot = () => {
                     From breathtaking landscapes to vibrant cultural hubs, <br /> our latest additions promise unforgettable experiences.  </p>
                 <hr className="border-1 mt-4 mb-16" />
                 <div className="dropdown dropdown-hover mb-4 w-full flex justify-center">
-                    <div tabIndex={0} role="button" className="btn m-1">Hover</div>
+                    <div tabIndex={0} role="button" className="btn m-1 bg-blue-600 text-white">Sort</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><button onClick={handleSort}>Item 1</button></li>
+                        <li><button onClick={handleSort}>Average Cost</button></li>
                         
                     </ul>
                 </div>
