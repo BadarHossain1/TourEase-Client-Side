@@ -21,7 +21,7 @@ const Vietnam = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols2 lg:grid-cols-3 mx-auto mt-10 ">
-            <h1>hello</h1>
+           
             
             {infos.map(info => <Country key={info._id} info={info}></Country>)}
             

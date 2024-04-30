@@ -2,11 +2,14 @@
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 const Login = () => {
 
-    const { LoginUser, GoogleLogin, GithubLogin, } = useContext(AuthContext);
+    const { LoginUser, GoogleLogin, GithubLogin, setLoading} = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
 
@@ -33,6 +36,7 @@ const Login = () => {
                 .then(res => {
                     console.log(res.user)
                     console.log('User logged in')
+                    navigate(location?.state || '/')
 
                     // notify here
 
@@ -60,6 +64,7 @@ const Login = () => {
             .then(result => {
                 console.log('User Google logged In', result.user);
                 setLoading(false);
+                navigate(location?.state || '/')
 
 
             })
@@ -77,6 +82,7 @@ const Login = () => {
             .then(result => {
                 console.log('User Github signed In', result.user);
                 setLoading(false)
+                navigate(location?.state || '/')
 
 
             })
@@ -90,7 +96,7 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div data-aos="fade-left" data-aos-duration="2000">
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

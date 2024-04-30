@@ -14,7 +14,7 @@ const AllTouristSpot = () => {
             .then(res => res.json())
             .then(data => {
                 setCards(data);
-                console.log(data);
+                
             });
     }, []);
 

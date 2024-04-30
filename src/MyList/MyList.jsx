@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import List from "./List";
+import Swal from "sweetalert2";
 
 
 const AllTouristSpot = () => {
@@ -11,26 +12,48 @@ const AllTouristSpot = () => {
         fetch(`http://localhost:5000/spots/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 setList(data);
             });
     }, [user]);
 
     const handleDelete = (id) => {
-        console.log('DELETE KORO', id);
-        fetch(`http://localhost:5000/spots/id/${id}`, {
-            method: 'DELETE',
-        })
-            .then(res => {
-                console.log(res);
-                // You may want to check if the deletion was successful and update the state accordingly
-                // For example, you can filter out the deleted item from the lists state
-                setList(prevLists => prevLists.filter(item => item._id !== id));
-            })
-            .then(data => { console.log(data) })
-            .catch(error => {
-                console.error('Error deleting:', error);
-            });
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/spots/id/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => {
+                        console.log(res);
+
+                        setList(prevLists => prevLists.filter(item => item._id !== id));
+                    })
+                    .then(data => {
+                        console.log(data)
+
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+
+                    })
+                    .catch(error => {
+                        console.error('Error deleting:', error);
+                    });
+            }
+        });
     }
 
 
@@ -41,12 +64,6 @@ const AllTouristSpot = () => {
 
                 <hr className="border-1 mt-4 mb-16" />
                 <div className=" ">
-
-
-
-
-
-
 
                     {/* {lists.map(list => <List key={list._id} list={list}></List>)} */}
 

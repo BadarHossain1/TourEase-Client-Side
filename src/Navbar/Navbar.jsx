@@ -66,7 +66,7 @@ const Navbar = () => {
                     </div>
 
                 </div>
-                <Link to="/" className=" text-2xl font-extrabold font-playfair-display flex items-center justify-center mr-2"><MdTravelExplore className="w-8 h-8 mr-1" />Tour<span className="text-[#0057d9]">Ease</span></Link>
+                <Link to="/" className=" text-3xl font-extrabold font-playfair-display flex items-center justify-center mr-2"><MdTravelExplore className="w-8 h-8 mr-1" />Tour<span className="text-[#0057d9]">Ease</span></Link>
 
 
 
@@ -96,7 +96,7 @@ const Navbar = () => {
                                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-1 md:mr-3 border-2 rounded-full w-[50px] h-[30px] md:w-[60px] md:h-[60px] flex items-center justify-center  avatar tooltip " data-tip={user?.displayName || 'No Name'}>
                                             <div className=" " data-tip={user?.displayName || 'No Name'}>
                                                 {
-                                                    user ? <img src={user?.photoURL || <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                                                    user ? <img src={user?.photoURL || <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] border border-blue-600" />} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                                                 }
                                                 {
 
@@ -111,7 +111,7 @@ const Navbar = () => {
 
                                                 </Link>
                                             </li>
-                                            <li><button onClick={handleLogout} className="hover:bg-blue-200 hover:text-white">Logout</button></li>
+                                            <li><Link to='/'  onClick={handleLogout} className="hover:bg-blue-600 hover:text-white">Logout</Link></li>
                                         </ul>
                                     </div>
                                 </div> : <div className="flex">
@@ -129,10 +129,10 @@ const Navbar = () => {
                                     </label>
                                     <div className="flex items-center">
 
-                                        <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={user?.displayName || 'No Name'}>
+                                        <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-blue-600 tooltip"  data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName || 'No Name'}>
                                             <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                                         </div>
-                                        <Link to="/login" className="btn w-15 md:w-20 bg-blue-200 text-[#fff] font-playfair-display">Login</Link>
+                                        <Link to="/login" className="btn w-15 md:w-20 bg-blue-600 text-[#fff] font-playfair-display">Login</Link>
                                     </div>
                                 </div>
 

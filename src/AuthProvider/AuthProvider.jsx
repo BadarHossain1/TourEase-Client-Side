@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
 
 import { GithubAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,6 +14,8 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const GoogleProvider = new GoogleAuthProvider();
 const GithubProvider = new GithubAuthProvider();
+
+
 
 
 
@@ -71,6 +74,7 @@ const AuthProvider = ({ children }) => {
                 // User is signed out
                 console.log('User signed out');
                 setLoading(false);
+
 
             }
         });

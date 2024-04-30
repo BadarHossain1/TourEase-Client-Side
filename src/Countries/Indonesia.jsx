@@ -12,7 +12,7 @@ const Indonesia = () => {
         fetch('http://localhost:5000/spots/Countries/Indonesia')
         .then(res=>res.json())
         .then(data =>{
-            console.log(data);
+            
             setInfo(data);
         })
     }, [])

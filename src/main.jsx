@@ -23,6 +23,7 @@ import Malaysia from './Countries/Malaysia';
 import Vietnam from './Countries/Thailand';
 import Cambodia from './Countries/Cambodia';
 import Update from './Update/Update';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -49,18 +50,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/AddTouristSpot',
-        element: <AddTouristSpot></AddTouristSpot>
+        element: <PrivateRoute><AddTouristSpot></AddTouristSpot></PrivateRoute>
 
       },
       {
         path: '/MyList',
-        element: <MyList></MyList>
+        element: <PrivateRoute><MyList></MyList></PrivateRoute>
 
       },
 
       {
         path: '/spots/id/:id',
-        element: <ViewDetails></ViewDetails>,
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
         
          
       }
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/update/:id',
-        element: <Update></Update>
+        element: <PrivateRoute><Update></Update></PrivateRoute>
       }
     ]
   },
